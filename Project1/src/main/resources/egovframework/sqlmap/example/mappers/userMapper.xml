@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.sample.vo.UserVo">
+
+	<insert id="insertUser" parameterType="UserVo">
+		INSERT INTO user_table (id, password, name, email, phone)
+		values (#{id}, #{password}, #{name}, #{email}, #{phone})
+	</insert>
+	
+	<select id="selectUser" parameterType="Map" resultType="UserVo">
+		select *
+		from user_table
+		where id = #{id} and password = #{password}
+	</select>
+	
+	<select id="checkUser" parameterType="String" resultType="int">
+		select count(*)
+		from user_table
+		where id = #{id}
+	</select>
+	
+	<delete id="deleteUser" parameterType="UserVo">
+		delete *
+		from user_table
+		where id = #{id} and password = #{password} and phone = #{phone}
+	</delete>
+	
+	<update id="updateUser" parameterType="UserVo">
+		update user_table
+		set password = #{password}, name = #{name}, email = #{email}, phone = #{phone}
+		where id = #{id}
+	</update>
+	
+	
+	
+	
+</mapper>

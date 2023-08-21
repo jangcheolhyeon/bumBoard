@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="egovframework.sample.vo.BoardVo">
+	
+<!-- 	<insert id="insertBoard" parameterType="BoardVo">
+		insert into board_table (writer, title, content, reg_date, view_cnt)
+		values (#{writer}, #{title}, #{content}, now(), 0)
+	</insert> -->
+	<insert id="insertBoard" parameterType="BoardVo">
+		insert into board_table (writer, title, content, reg_date, view_cnt, file_name)
+		values (#{writer}, #{title}, #{content}, now(), 0, #{file_name})
+	</insert>
+	
+<!-- 	<select id="selectBoardList" parameterType="Map" resultType="BoardVo">
+		select *
+		from board_table
+		where reg_date <![CDATA[>=]]> #{startDate} and reg_date <![CDATA[<=]]> #{endDate}
+		order by isadmin desc, bno desc
+		limit #{offset}, #{pageSize}
+	</select> -->
+
+	<select id="selectBoardList" parameterType="Map" resultType="BoardVo">
+		select *
+		from board_table
+		where reg_date <![CDATA[>=]]> #{startDate} and reg_date <![CDATA[<=]]> #{endDate}
+		<if test="hideNotice == true">
+			and isadmin = 0
+		</if>
+		order by isadmin desc, bno desc
+		limit #{offset}, #{pageSize}
+	</select>
+
+	
+	<select id="selectBoard" parameterType="int" resultType="BoardVo">
+		select *
+		from board_table
+		where bno = #{bno}
+	</select>
+	
+	<delete id="deleteBoard" parameterType="BoardVo">
+		delete 
+		from board_table
+		where bno = #{bno} and writer = #{writer}
+	</delete>
+	
+	<update id="modifyBoard" parameterType="BoardVo">
+		update board_table
+		set title = #{title}, content=#{content}, file_name=#{file_name}
+		where bno = #{bno} and writer = #{writer}
+	</update>
+	
+	<update id="updateBoardViewCnt" parameterType="Map">
+		update board_table
+		set view_cnt=#{viewCount}
+		where bno=#{bno}
+	</update>
+	
+	<select id="BoardListAllCnt" resultType="int" parameterType="map">
+		select count(*)
+		from board_table
+		where reg_date <![CDATA[>=]]> #{startDate} and reg_date <![CDATA[<=]]> #{endDate}
+		<if test="hideNotice == true">
+			and isadmin = 0
+		</if>
+	</select>
+	
+	<select id="searchBoard" parameterType="Map" resultType="BoardVo">
+		select *
+		from board_table
+		where reg_date <![CDATA[>=]]> #{startDate} and reg_date <![CDATA[<=]]> #{endDate} <!-- and category=#{category} -->
+		<if test="hideNotice == true">
+			and isadmin = 0
+		</if>
+			<choose>
+			
+			<when test="condition == 'A'.toString()">
+				and (title like concat('%', #{keyword}, '%')
+				or content like concat('%', #{keyword}, '%'))
+			</when>
+			<when test="condition == 'W'.toString()">
+				and writer like concat('%', #{keyword}, '%')
+			</when>
+			<when test="condition == 'T'.toString()">
+				and title like concat('%', #{keyword}, '%')
+			</when>
+			
+			<!-- 
+				<when test="condition == 'A'.toString()">
+					title like concat('%', '#{keyword}', '%')
+					or content like concat('%', '#{keyword}', '%')
+				</when>
+				<when test="condition == 'W'.toString()">
+					writer like concat('%', '#{keyword}', '%')
+				</when>
+				<when test="condition == 'T'.toString()">
+					title like concat('%', '#{keyword}', '%')
+				</when>
+			-->
+			</choose>
+			
+			<choose>
+			
+				<when test="category == 'Free'.toString()">
+					and category = "Free"
+				</when>
+				<when test="category == 'Qna'.toString()">
+					and category = "Qna"
+				</when>
+				<when test="category == 'Notification'.toString()">
+					and category = "Notification"
+				</when>
+				<otherwise>
+					and true
+				</otherwise>
+			
+			</choose>
+			
+		order by isadmin desc, bno desc
+		limit #{offset}, #{pageSize}	
+	</select>
+	
+	<select id="searchBoardCnt" parameterType="Map" resultType="int">
+		select count(*)
+		from board_table
+		where reg_date <![CDATA[>=]]> #{startDate} and reg_date <![CDATA[<=]]> #{endDate} <!-- and category=#{category} -->
+		<if test="hideNotice == true">
+			and isadmin = 0
+		</if>
+			<choose>
+			
+				<when test="condition == 'A'.toString()">
+					and (title like concat('%', #{keyword}, '%')
+					or content like concat('%', #{keyword}, '%'))
+				</when>
+				<when test="condition == 'W'.toString()">
+					and writer like concat('%', #{keyword}, '%')
+				</when>
+				<when test="condition == 'T'.toString()">
+					and title like concat('%', #{keyword}, '%')
+				</when>
+			
+			</choose>
+			
+			<choose>
+			
+				<when test="category == 'Free'.toString()">
+					and category = "Free"
+				</when>
+				<when test="category == 'Qna'.toString()">
+					and category = "Qna"
+				</when>
+				<when test="category == 'Notification'.toString()">
+					and category = "Notification"
+				</when>
+				<otherwise>
+					and true
+				</otherwise>
+			
+			</choose>
+
+	</select>
+	
+	<select id="selecMytBoardList" parameterType="Map" resultType="BoardVo">
+		select *
+		from board_table
+		where writer = #{id}
+		order by bno desc
+		limit #{offset}, #{pageSize}
+	</select>
+	
+	<select id="selectMyBoardListAllCnt" parameterType="String" resultType="int">
+		select count(*)
+		from board_table
+		where writer = #{id}
+	</select>
+	
+	
+	<select id="selectSearchMyBoardList" parameterType="Map" resultType="BoardVo">
+		select *
+		from board_table
+		where writer = #{id}
+		
+			<choose>
+			
+			<when test="condition == 'A'.toString()">
+				and (title like concat('%', #{keyword}, '%')
+				or content like concat('%', #{keyword}, '%'))
+			</when>
+			<when test="condition == 'T'.toString()">
+				and (title like concat('%', #{keyword}, '%'))
+			</when>
+			
+			</choose>
+			
+		order by bno desc
+		limit #{offset}, #{pageSize}	
+	</select>
+	
+	<select id="selectSearchMyBoardCnt" parameterType="Map" resultType="int">
+		select count(*)
+		from board_table
+		where writer = #{id}
+		
+			<choose>
+			
+			<when test="condition == 'A'.toString()">
+				and (title like concat('%', #{keyword}, '%')
+				or content like concat('%', #{keyword}, '%'))
+			</when>
+			<when test="condition == 'T'.toString()">
+				and (title like concat('%', #{keyword}, '%'))
+			</when>
+			
+			</choose>
+			
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+</mapper>

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="egovframework.example.sample.vo.AdminVo">
+
+	<select id="selectAdmin" resultType="AdminVo" parameterType="Map">
+		select * 
+		from admin_table
+		where id=#{id} and password=#{password}
+	</select>
+	
+	<select id="selectTodayWriteBoard" parameterType="Map" resultType="BoardVo">
+		select *
+		from board_table
+		where date_format(reg_date, '%Y-%m-%d') = curdate()
+		order by bno desc
+		limit #{offset}, #{pageSize}
+	</select>
+	
+	<select id="selectTodayRegisterUser" parameterType="Map" resultType="UserVo">
+		select *
+		from user_table
+		where date_format(reg_date, '%Y-%m-%d') = curdate()
+		order by reg_date
+		limit #{offset}, #{pageSize}
+	</select>
+	
+	<select id="selectHighViewCnt" parameterType="Map" resultType="BoardVo">
+		select *
+		from board_table
+		order by view_cnt desc
+		limit #{offset}, #{pageSize}
+	</select>
+	
+	<select id="selectAllUserInfo" parameterType="Map" resultType="UserVo">
+		select *
+		from user_table
+		order by reg_date desc
+		limit #{offset}, #{pageSize}
+	</select>
+	
+	<select id="selectAllUserCnt" resultType="int">
+		select count(*)
+		from user_table
+	</select>
+	
+	<select id="searchUser" parameterType="Map" resultType="UserVo">
+		select *
+		from user_table
+		where 
+			<choose>
+			
+			<when test="condition == 'A'.toString()">
+				id like concat('%', #{keyword}, '%')
+				or name like concat('%', #{keyword}, '%')
+			</when>
+			<when test="condition == 'R'.toString()">
+				reg_date like concat('%', #{keyword}, '%')
+			</when>
+			
+			<!-- 
+				<when test="condition == 'A'.toString()">
+					title like concat('%', '#{keyword}', '%')
+					or content like concat('%', '#{keyword}', '%')
+				</when>
+				<when test="condition == 'W'.toString()">
+					writer like concat('%', '#{keyword}', '%')
+				</when>
+				<when test="condition == 'T'.toString()">
+					title like concat('%', '#{keyword}', '%')
+				</when>
+			-->
+			</choose>
+		order by reg_date desc
+		limit #{offset}, #{pageSize}	
+	</select>
+	
+	<select id="searchUserCnt" parameterType="Map" resultType="int">
+		select count(*)
+		from user_table
+		where 
+			<choose>
+			
+			<when test="condition == 'A'.toString()">
+				id like concat('%', #{keyword}, '%')
+				or name like concat('%', #{keyword}, '%')
+			</when>
+			<when test="condition == 'R'.toString()">
+				reg_date like concat('%', #{keyword}, '%')
+			</when>
+			
+			<!-- 
+				<when test="condition == 'A'.toString()">
+					title like concat('%', '#{keyword}', '%')
+					or content like concat('%', '#{keyword}', '%')
+				</when>
+				<when test="condition == 'W'.toString()">
+					writer like concat('%', '#{keyword}', '%')
+				</when>
+				<when test="condition == 'T'.toString()">
+					title like concat('%', '#{keyword}', '%')
+				</when>
+			-->
+			</choose>
+	</select>
+	
+	<delete id="deleteUser" parameterType="String">
+		delete
+		from user_table
+		where id = #{userId}
+	</delete>
+	
+	<select id="selectUserInfo" parameterType="String" resultType="UserVo">
+		select *
+		from user_table
+		where id = #{id}		
+	</select>
+	
+	<update id="updateUserInfo" parameterType="UserVo">
+		update user_table
+		set password = #{password}, name = #{name}, email = #{email}, phone = #{phone}
+		where id = #{id}
+	</update>	
+	
+	
+	
+	
+	
+	
+	
+	
+	<select id="selectAllBoard" parameterType="Map" resultType="BoardVo">
+		select *
+		from board_table
+		order by isadmin desc, bno desc
+		limit #{offset}, #{pageSize}
+	</select>
+	
+	<select id="selectAllBoardCnt" resultType="int">
+		select count(*)
+		from board_table
+	</select>
+	
+	<select id="searchBoard" parameterType="Map" resultType="BoardVo">
+		select *
+		from board_table
+		where 
+			<choose>
+			
+			<when test="condition == 'A'.toString()">
+				title like concat('%', #{keyword}, '%')
+				or content like concat('%', #{keyword}, '%')
+			</when>
+			<when test="condition == 'W'.toString()">
+				writer like concat('%', #{keyword}, '%')
+			</when>
+			<when test="condition == 'T'.toString()">
+				title like concat('%', #{keyword}, '%')
+			</when>
+			
+			<!-- 
+				<when test="condition == 'A'.toString()">
+					title like concat('%', '#{keyword}', '%')
+					or content like concat('%', '#{keyword}', '%')
+				</when>
+				<when test="condition == 'W'.toString()">
+					writer like concat('%', '#{keyword}', '%')
+				</when>
+				<when test="condition == 'T'.toString()">
+					title like concat('%', '#{keyword}', '%')
+				</when>
+			-->
+			</choose>
+		order by isadmin desc, bno desc
+		limit #{offset}, #{pageSize}	
+	</select>
+	
+	<select id="searchBoardCnt" parameterType="Map" resultType="int">
+		select count(*)
+		from board_table
+		where 
+			<choose>
+			
+			<when test="condition == 'A'.toString()">
+				title like concat('%', #{keyword}, '%')
+				or content like concat('%', #{keyword}, '%')
+			</when>
+			<when test="condition == 'W'.toString()">
+				writer like concat('%', #{keyword}, '%')
+			</when>
+			<when test="condition == 'T'.toString()">
+				title like concat('%', #{keyword}, '%')
+			</when>
+			
+			<!-- 
+				<when test="condition == 'A'.toString()">
+					title like concat('%', '#{keyword}', '%')
+					or content like concat('%', '#{keyword}', '%')
+				</when>
+				<when test="condition == 'W'.toString()">
+					writer like concat('%', '#{keyword}', '%')
+				</when>
+				<when test="condition == 'T'.toString()">
+					title like concat('%', '#{keyword}', '%')
+				</when>
+			-->
+			</choose>
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<delete id="deleteBoard" parameterType="int">
+		delete
+		from board_table
+		where bno = #{bno}		
+	</delete>
+	
+	<select id="selectBoard" parameterType="int" resultType="BoardVo">
+		select *
+		from board_table
+		where bno = #{bno}
+	</select>
+
+	<insert id="insertBoard" parameterType="Map">
+		insert into board_table (writer, title, content, reg_date, view_cnt, isadmin)
+		values ("관리자", #{title}, #{content}, now(), 0, 1)
+	</insert>
+	
+	<update id="updateBoard" parameterType="BoardVo">
+		update board_table
+		set title = #{title}, content = #{content}
+		where bno = #{bno} and isadmin = #{isadmin}
+	</update>	
+	
+
+
+
+</mapper>

@@ -1,0 +1,210 @@
+@charset "UTF-8";
+
+/* html{
+	height: 100%;
+}
+
+body{
+	height:100%;
+	margin:0;
+}
+ */
+
+/* .my_nav{
+	position:absolute;
+	float: right;
+	right: 20px;
+	top: 20px;
+	display:flex;
+	align-items: center;
+} */
+
+/* .logo_container{
+	position:absolute;
+	left:0;
+	text-align:center;
+	width:250px;
+	top:0;
+}
+
+
+.bumil_logo{
+	width:120px;
+	height:120px;
+} */
+
+
+/* .main_div{
+	display: flex;
+	width: 100%;
+	height: 100%;
+} */
+
+
+/* .admin_nav{
+	width: 250px;
+	padding-top:30px;
+	background-color: #F4F4F4;
+	margin-top:124px;
+	flex-shrink: 0;
+}
+
+.admin_nav ul{
+	list-style: none;
+	margin-bottom: 10px;
+	flex-direction:column;
+}
+
+.nav_category{
+	list-style: none;
+	text-decoration:none;
+	color:black;
+	display:inline-block;
+}
+
+.nav-active:hover a{
+	color:white;
+}
+
+.nav_category a{
+	color:black;
+	text-decoration:none;
+}
+
+.nav-active{
+	background-color:gray;
+	font-weight:bold;
+	transition: all ease 0.5s 0s;
+}
+
+
+.admin_nav ul{
+	display:flex;
+	align-items: center;
+	padding:0;
+	
+}
+
+.admin_nav ul li {
+	cursor: pointer;
+	font-size: 30px;
+	padding: 10px 0px;	
+	width:100%;
+	text-align:center;
+}
+
+.toggleMenu{
+	list-style:none;
+} */
+
+.main_board_content{
+	display:flex;
+	align-items: center;
+	flex-direction:column;
+	position: relative;
+	justify-content:center;
+	margin: 0 auto;
+	min-width: 700px;
+}
+
+/* .hidden{
+	display:none;
+} */
+
+.main_content{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.update_form{
+	display:flex;
+	flex-direction:column;
+	width: 500px;
+}
+
+.update_form > input{
+	border: none;
+	border-bottom: 3px solid black;
+	outline:none;
+	height:30px;
+	font-size:25px;
+}
+
+.form_buttons{
+	margin-top:20px;
+	display:flex;
+	justify-content: center;
+}
+
+.updateBtn{
+	margin-right: 10px;
+}
+
+.form_header_label{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.updateBtn, .cancelBtn{
+	border: none;
+	border-bottom: 4px solid black;
+	height: 30px;
+	width: 70px;
+	font-weight:bold;
+}
+
+.updateBtn:hover{
+	cursor: pointer;
+}
+
+.cancelBtn{
+	cursor: pointer;
+}
+
+.updateBtn:hover, .cancelBtn:hover {
+	background-color:black;
+	color:white;
+	font-weight:bold;
+	border-bottom: 4px solid white;
+}
+
+
+
+/* .logout_btn{
+	border: none;
+	border-bottom: 4px solid black;
+	height: 30px;
+	width: 70px;
+	font-weight:bold;
+	transition: all ease 0.5s 0s;
+}
+
+.logout_btn:hover{
+	background-color:black;
+	color:white;
+	font-weight:bold;
+	border-bottom: 4px solid white;
+	cursor:pointer;
+}
+ */
+
+/* .current_user_welcome{
+	margin-right:10px;
+}
+
+.current_user_name{
+	text-decoration:underline;
+}
+
+
+
+.reload_img{
+	width:25px;
+	height:25px;
+	margin-right:10px;
+	cursor:pointer;
+}
+ */
+

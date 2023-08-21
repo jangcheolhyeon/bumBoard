@@ -1,0 +1,326 @@
+@charset "UTF-8";
+
+/* html{
+	overflow-x: hidden;
+	height: 100%;
+}
+
+body{
+	height:100%;
+	margin:0;
+}
+
+.hidden{
+	display:none;
+} */
+
+.main_content{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+table{
+	
+	border-collapse: separate;
+	border-spacing: 100px 30px;
+	
+	margin-left: auto;
+	margin-right: auto;
+}
+
+td{
+	text-align:center;
+}
+
+.main_board_parent{
+	display: flex;
+	flex: 1;
+}
+
+
+.main_board_content{
+/* 	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display:flex;
+	justify-content: center;
+	width: 70%; */
+	margin: 0 auto;
+	margin-top: 300px;
+	min-width: 700px;
+}
+
+/* .main_div{
+	display: flex;
+	width: 100%;
+}
+
+
+.admin_nav{
+	width: 190px;
+	margin-top:30px;
+}
+
+.admin_nav > ul{
+	list-style: none;
+	margin-bottom: 10px;
+	flex-direction:column;
+}
+
+.nav_category{
+	list-style: none;
+	text-decoration:none;
+	color:black;
+	display:inline-block;
+}
+
+.nav_category:hover{
+	text-decoration: underline;
+}
+
+
+.admin_nav > ul{
+	display:flex;
+}
+
+.admin_nav > ul > li {
+	cursor: pointer;
+	font-size: 30px;	
+}
+ */
+/* .toggleMenu{
+	list-style:none;
+}
+ */
+
+/* body{
+	margin: 0px;
+}
+
+.main_div{
+	display: flex;
+	width: 100%;
+	height:100vh;
+} */
+
+
+
+/* .my_nav{
+	position:absolute;
+	float: right;
+	right: 20px;
+	top: 20px;
+	display:flex;
+	align-items: center;
+} */
+
+/* .logo_container{
+	position:absolute;
+	left:0;
+	text-align:center;
+	width:250px;
+	top:0;
+} */
+
+/* .admin_nav{
+	width: 250px;
+	padding-top:30px;
+	background-color: #F4F4F4;
+	margin-top:124px;
+	flex-shrink: 0;
+}
+
+.admin_nav ul{
+	list-style: none;
+	margin-bottom: 10px;
+	flex-direction:column;
+}
+
+.nav_category{
+	list-style: none;
+	text-decoration:none;
+	color:black;
+	display:inline-block;
+}
+
+.nav-active{
+	background-color:gray;
+	font-weight:bold;
+	transition: all ease 0.5s 0s;
+}
+
+.nav-active:hover a{
+	color:white;
+}
+
+
+.nav_category a{
+	color:black;
+	text-decoration:none;
+}
+
+
+.admin_nav ul{
+	display:flex;
+	align-items: center;
+	padding:0;
+	
+}
+
+.admin_nav ul li {
+	cursor: pointer;
+	font-size: 30px;
+	padding: 10px 0px;	
+	width:100%;
+	text-align:center;
+}
+ */
+.board_form{
+	display:flex;
+	flex-direction:column;
+	/* width:60%; */
+	width: 550px;
+	margin: 0 auto;
+}
+
+
+.board_form > input{
+	border: none;
+	border-bottom: 3px solid black;
+	outline:none;
+	height:30px;
+	font-size:25px;
+}
+
+.board_form > .form_header_label{
+	font-weight:bold;
+	font-size:20px;
+}
+
+
+.board_infos{
+	display:flex;
+}
+
+.board_infos > input{
+	border: none;
+	border-bottom: 3px solid black;
+	outline:none;
+	height:30px;
+	font-size:25px;
+}
+
+.content{
+	resize: none;
+	height:120px;
+	font-weight:bold;
+	font-size:20px;
+}
+
+.form_buttons{
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+}
+
+
+.content{
+	border: 3px solid black;
+}
+
+.form_buttons > button{
+	border: none;
+	border-bottom: 4px solid black;
+	height: 40px;
+	width: 100px;
+	font-weight:bold;
+	transition: all ease 0.5s 0s;
+}
+
+.form_buttons > button:hover{
+	cursor: pointer;
+	background-color:black;
+	color:white;
+	font-weight:bold;
+	border-bottom: 4px solid white;
+}
+
+
+/* .hidden{
+	display:none;
+}
+
+.bumil_logo{
+	width:120px;
+	height:120px;
+}
+ */
+
+.menuBar{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.menuBar > span{
+	margin-right: 2%;
+}
+
+
+
+/* .logout_container{
+	display:flex;
+	align-items:center;
+}
+
+.logout_container > button{
+	border: none;
+	border-bottom: 4px solid black;
+	height: 40px;
+	width: 80px;
+	font-weight:bold;
+
+}
+
+.logout_btn{
+	border: none;
+	border-bottom: 4px solid black;
+	height: 30px;
+	width: 70px;
+	font-weight:bold;
+	transition: all ease 0.5s 0s;
+}
+
+.logout_btn:hover{
+	background-color:black;
+	color:white;
+	font-weight:bold;
+	border-bottom: 4px solid white;
+	cursor:pointer;
+}
+
+
+.current_user_welcome{
+	margin-right:10px;
+}
+
+.current_user_name{
+	text-decoration:underline;
+}
+
+
+.reload_img{
+	width:25px;
+	height:25px;
+	margin-right:10px;
+	cursor:pointer;
+}
+ */
+
+
+
+
+

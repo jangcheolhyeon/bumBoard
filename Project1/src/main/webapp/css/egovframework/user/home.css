@@ -1,0 +1,115 @@
+/* html{
+	height:100vh;
+}
+
+body{
+	margin: 0px;
+	height:100%;
+}
+ */
+
+.home_nav_category{
+	list-style: none;
+}
+
+.home_nav_category > a{
+	color:black;
+	text-decoration:none;
+	font-size: 35px;
+}
+
+.user_home_menu{
+	position:absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width:100%;
+	display:flex;
+	justify-content: center;
+}	
+
+
+ul{
+	margin: 0px;
+	padding: 0px;
+	display: flex;
+	width:80%;
+	justify-content: space-around;
+}
+
+ul > li {
+	padding: 15px 30px;
+	transition: all ease 0.5s 0s;
+}
+
+
+.home_nav_category_hover{
+	background-color:gray;
+	cursor:pointer;
+}
+
+
+.home_nav_category_hover:hover a{
+	color: white;
+}
+
+/* .logo_container{
+	width:250px;
+	text-align:center;
+	position:absolute;
+}
+
+.bumil_logo{
+	width:120px;
+	height:120px;
+}
+
+.my_nav{
+	position:absolute;
+	float: right;
+	right: 20px;
+	top: 20px;
+	display:flex;
+	align-items: center;
+}
+
+
+
+.current_user_welcome{
+	margin-right:10px;
+}
+
+
+.current_user_name{
+	text-decoration: underline;
+}
+
+
+.logout_btn{
+	border: none;
+	border-bottom: 4px solid black;
+	height: 30px;
+	width: 70px;
+	font-weight:bold;
+	transition: all ease 0.5s 0s;
+}
+
+.logout_btn:hover{
+	background-color:black;
+	color:white;
+	font-weight:bold;
+	border-bottom: 4px solid white;
+	cursor:pointer;
+}
+
+
+.reload_img{
+	width:25px;
+	height:25px;
+	margin-right:10px;
+	cursor:pointer;
+}
+
+
+
+ */
